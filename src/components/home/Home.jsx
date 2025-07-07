@@ -1,7 +1,7 @@
 import React from "react";
+import "./Home.css";
 
 const Home = () => {
-    // Example restaurant data
     const restaurants = [
         {
             id: 1,
@@ -14,37 +14,69 @@ const Home = () => {
             id: 2,
             name: "Pasta Palace",
             cuisine: "Italian",
-            image: "https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80",
+            image: "https://tse4.mm.bing.net/th/id/OIP.nXWklIH_NBz7hG0rkThI1QHaE7?pid=Api&P=0&h=180",
             rating: 4.2,
         },
         {
             id: 3,
             name: "Sushi World",
             cuisine: "Japanese",
-            image: "https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80",
+            image: "https://tse1.mm.bing.net/th/id/OIP.Ti3-djYt7jq48AcI4yjrMwHaEJ?pid=Api&P=0&h=180",
             rating: 4.7,
         },
     ];
 
+    const cuisines = ["Indian", "Chinese", "Italian", "Mexican", "Thai", "American"];
+
     return (
-        <div className="container mt-4">
-            <div className="text-center mb-8 mt-8">
-                <h1 className="font-bold text-3xl mb-2 text-orange-600">Welcome to BiteMaster!</h1>
-                <p className="text-gray-600 text-lg mb-6">Delicious food delivered fast from your favorite local restaurants.</p>
-            </div>
-            <h2 className="mb-4 text-xl font-semibold">Popular Restaurants</h2>
-            <div className="grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}>
-                {restaurants.map((rest) => (
-                    <div className="card" key={rest.id}>
-                        <img src={rest.image} alt={rest.name} className="w-full h-48 object-cover" />
-                        <div className="p-4">
-                            <h3 className="font-bold text-lg mb-2">{rest.name}</h3>
-                            <p className="text-gray-600 mb-2">{rest.cuisine}</p>
-                            <span className="text-orange-600 font-semibold">⭐ {rest.rating}</span>
+        <div className="home-wrapper">
+            <section className="hero">
+                <h1>Bite into Happiness</h1>
+                <p>Your favorite meals delivered to your doorstep in minutes.</p>
+                <button className="hero-btn">Explore Restaurants</button>
+            </section>
+
+            <section className="features">
+                <div className="feature-box">
+                    <h3>🔥 Hot & Fresh</h3>
+                    <p>Meals delivered fresh and steaming, every single time.</p>
+                </div>
+                <div className="feature-box">
+                    <h3>⏱️ Quick Delivery</h3>
+                    <p>Speedy service so you never wait too long for your food.</p>
+                </div>
+                <div className="feature-box">
+                    <h3>📍 Live Tracking</h3>
+                    <p>Know exactly where your order is, from kitchen to your door.</p>
+                </div>
+            </section>
+
+            <section className="browse-cuisine">
+                <h2>Browse by Cuisine</h2>
+                <div className="cuisine-tags">
+                    {cuisines.map((type, idx) => (
+                        <span key={idx} className="tag">
+                            {type}
+                        </span>
+                    ))}
+                </div>
+            </section>
+
+            <section className="restaurant-section">
+                <h2>Popular Restaurants</h2>
+                <div className="restaurant-grid">
+                    {restaurants.map((rest) => (
+                        <div className="restaurant-card" key={rest.id}>
+                            <img src={rest.image} alt={rest.name} className="restaurant-img" />
+                            <div className="restaurant-info">
+                                <h3>{rest.name}</h3>
+                                <p>{rest.cuisine}</p>
+                                <span className="rating">⭐ {rest.rating}</span>
+                            </div>
                         </div>
-                    </div>
-                ))}
-            </div>
+                    ))}
+                </div>
+            </section>
         </div>
     );
 };

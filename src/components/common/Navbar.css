@@ -1,76 +1,70 @@
-.navbar {
-    background: var(--card-background);
-    border-bottom: 1px solid var(--border-color);
-    box-shadow: var(--shadow);
+.nav-root {
+    background-color: #fff;
+    border-bottom: 1px solid #dcdcdc;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
     position: sticky;
     top: 0;
-    z-index: 50;
+    z-index: 999;
+    width: 100%;
 }
 
-.navbar-brand h2 {
-    font-size: 1.8rem;
-    font-weight: 700;
+.nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.navbar-nav .nav-link {
-    color: var(--text-color);
-    transition: color 0.2s ease;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-weight: 500;
-}
-
-.navbar-nav .nav-link:hover {
-    color: var(--primary-color);
-    background-color: rgba(255, 107, 53, 0.1);
-}
-
-.cart-icon-wrapper {
-    position: relative;
-}
-
-.cart-badge {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    background-color: var(--primary-color);
-    color: white;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
+.brand-link {
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 0.75rem;
-    font-weight: 600;
+    gap: 8px;
+    text-decoration: none;
 }
 
-.auth-links .btn {
-    padding: 8px 16px;
-    font-size: 0.9rem;
+.brand-logo {
+    height: 45px;
+    width: auto;
+    display: block;
+    object-fit: contain;
 }
 
-.user-info {
-    color: var(--text-color);
+.brand-text {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #e85d04;
+}
+
+.menu-links {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.menu-item {
+    text-decoration: none;
+    color: #222;
     font-weight: 500;
+    padding: 8px 10px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.menu-item:hover {
+    background-color: rgba(232, 93, 4, 0.1);
+    color: #e85d04;
 }
 
 @media (max-width: 768px) {
-    .navbar-nav {
-        gap: 8px;
+    .menu-links {
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: flex-end;
     }
 
-    .navbar-nav .nav-link span {
+    .menu-item span {
         display: none;
-    }
-
-    .auth-links {
-        flex-direction: column;
-        gap: 4px;
-    }
-
-    .auth-links .btn {
-        padding: 6px 12px;
-        font-size: 0.8rem;
     }
 }

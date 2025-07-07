@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Login.css";
 
 const Login = () => {
     const [isSignUp, setIsSignUp] = useState(false);
@@ -21,31 +22,31 @@ const Login = () => {
         }
 
         setError("");
-        alert(`${isSignUp ? "Sign Up" : "Login"} successful! (Demo only)`);
+        alert(`${isSignUp ? "Sign Up" : "Login"} successful!`);
     };
 
     return (
-        <div className="container flex justify-center items-center" style={{ minHeight: "70vh" }}>
-            <form className="card p-6" style={{ minWidth: 320, maxWidth: 400 }} onSubmit={handleSubmit}>
-                <h2 className="mb-4 text-center">{isSignUp ? "Sign Up" : "Login"}</h2>
-                {error && <div className="mb-2 text-red-600">{error}</div>}
+        <div className="login-wrapper">
+            <form className="login-card" onSubmit={handleSubmit}>
+                <h2>{isSignUp ? "Sign Up" : "Login"}</h2>
+                {error && <div className="login-error">{error}</div>}
 
-                <div className="mb-4">
-                    <label className="block mb-2 font-semibold">Email</label>
+                <div className="login-field">
+                    <label className="login-label">Email</label>
                     <input
                         type="email"
-                        className="w-full p-3 border rounded"
+                        className="login-input"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
                     />
                 </div>
 
-                <div className="mb-4">
-                    <label className="block mb-2 font-semibold">Password</label>
+                <div className="login-field">
+                    <label className="login-label">Password</label>
                     <input
                         type="password"
-                        className="w-full p-3 border rounded"
+                        className="login-input"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
@@ -53,11 +54,11 @@ const Login = () => {
                 </div>
 
                 {isSignUp && (
-                    <div className="mb-4">
-                        <label className="block mb-2 font-semibold">Confirm Password</label>
+                    <div className="login-field">
+                        <label className="login-label">Confirm Password</label>
                         <input
                             type="password"
-                            className="w-full p-3 border rounded"
+                            className="login-input"
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             required
@@ -65,24 +66,20 @@ const Login = () => {
                     </div>
                 )}
 
-                <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded">
+                <button type="submit" className="login-button">
                     {isSignUp ? "Sign Up" : "Login"}
                 </button>
 
-                <div className="mt-4 text-center">
+                <div className="login-toggle">
                     {isSignUp ? (
                         <p>
                             Already have an account?{" "}
-                            <span className="text-blue-600 cursor-pointer" onClick={() => setIsSignUp(false)}>
-                                Login
-                            </span>
+                            <span onClick={() => setIsSignUp(false)}>Login</span>
                         </p>
                     ) : (
                         <p>
                             New user?{" "}
-                            <span className="text-blue-600 cursor-pointer" onClick={() => setIsSignUp(true)}>
-                                Sign Up
-                            </span>
+                            <span onClick={() => setIsSignUp(true)}>Sign Up</span>
                         </p>
                     )}
                 </div>
