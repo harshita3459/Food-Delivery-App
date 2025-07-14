@@ -1,7 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
 const Home = () => {
+    const navigate = useNavigate();
     const restaurants = [
         {
             id: 1,
@@ -33,7 +35,7 @@ const Home = () => {
             <section className="hero">
                 <h1>Bite into Happiness</h1>
                 <p>Your favorite meals delivered to your doorstep in minutes.</p>
-                <button className="hero-btn">Explore Restaurants</button>
+                <button className="hero-btn" onClick={() => navigate('/restaurants')}>Explore Restaurants</button>
             </section>
 
             <section className="features">
@@ -55,7 +57,12 @@ const Home = () => {
                 <h2>Browse by Cuisine</h2>
                 <div className="cuisine-tags">
                     {cuisines.map((type, idx) => (
-                        <span key={idx} className="tag">
+                        <span
+                            key={idx}
+                            className="tag"
+                            onClick={() => navigate('/restaurants')}
+                            style={{ cursor: 'pointer' }}
+                        >
                             {type}
                         </span>
                     ))}
@@ -66,7 +73,12 @@ const Home = () => {
                 <h2>Popular Restaurants</h2>
                 <div className="restaurant-grid">
                     {restaurants.map((rest) => (
-                        <div className="restaurant-card" key={rest.id}>
+                        <div
+                            className="restaurant-card"
+                            key={rest.id}
+                            onClick={() => navigate('/restaurants')}
+                            style={{ cursor: 'pointer' }}
+                        >
                             <img src={rest.image} alt={rest.name} className="restaurant-img" />
                             <div className="restaurant-info">
                                 <h3>{rest.name}</h3>
